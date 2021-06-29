@@ -18,7 +18,6 @@ Librerie utilizzate:
 
 1 - Fontawesome
 2 - Bootstrap
-3 - JQuery
 4 - WAXio
 
 
@@ -76,3 +75,14 @@ tempo stesso una reperibilità dell'applicativo immediata tramite pagina web o t
 
 
 =================================================================================================================
+Delucidazioni sul protocollo IPFS/HTTP , le immagini della collezione nft inserite su pinata.cloud e collegate
+su atomichub per essere ricavate e successivamente stampate sulla pagina della dapp necessitano di una delle due possibili soluzioni
+
+1) array associativo dove facendo risiedere nella cartella delle images tutte le immagini possibili tutti gli NFTs
+dove in base alle stringa ipfs abbiamo il percorso di un immagine che verrà utilizzata solo per indicizzare tramitee
+la stampa sulla pagina html il contenuto del tuo wallet wax
+
+2) creare una funzione che esegue la decodifica base32 una volta ottenuta la decodifica dalla stringa ipfs presa in input
+comporre un link che tramite quella stringa ci porterà  a stampare l'immagine nella pagina web successivamente ad
+una richiesta fetch su quel link generato e facendo append dei dati ottenuti nella dom
+===================================================================================================================
