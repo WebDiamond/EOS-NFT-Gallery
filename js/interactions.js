@@ -1,4 +1,5 @@
     const wax = new waxjs.WaxJS('https://wax.greymass.com', null, null, false);
+
     //autoLogin();
     //controlla se l'autologin è disponibile
     async function autoLogin() {
@@ -72,11 +73,11 @@
           return response.json();
         })
       .then(function (myJson) {
-          console.log(myJson.data.templates);
+          //console.log(myJson.data.templates);
           const obj = myJson.data.templates;
           Object.keys(obj).forEach(key => {
             // per ogni template di una determinata collection svolgo delle operazioni
-            if (obj[key].collection_name === "alien.worlds"){
+            if (obj[key].collection_name === "cybergems155"){
               console.log(key,"asset numbers:",obj[key].assets,obj[key].collection_name,obj[key].template_id)
               let i = obj[key].assets;
               while (i!=0){
@@ -96,20 +97,32 @@
           return response.json();
       }).then(function (myJson) {
         // lista di tutti gli NFTs di quella collection con quel templateid
-        if (myJson.data.template_id === "19649"){
+        if (myJson.data.template_id === "204648"){
           console.log(myJson);
           document.getElementById('responseinvx').append(JSON.stringify(myJson.data.immutable_data, null, 2))
+          getImgFromIpfs(myJson.data.immutable_data.img,'responseinvx')
         } else {
           console.log(myJson);
           document.getElementById('responseinv').append(JSON.stringify(myJson.data.immutable_data, null, 2))
+          getImgFromIpfs(myJson.data.immutable_data.img,'responseinv')
+
         }
       }).catch(function (error) {
           console.log("Error: " + error);
       });
     }
-    function getImgFromIpfs(ipfsstring){
-
+    function getImgFromIpfs(ipfsstring,htmlid){
+      var imgipfs = 'https://ipfs.atomichub.io/ipfs/'+ipfsstring;
+    /*  var img = document.createElement("img");
+      img.src = imgipfs;
+      img.width = '50px';
+      img.height = '90px';
+      document.body.appendChild(img);*/
+      const img = new Image(100, 200); // width, height
+      img.src = imgipfs;
+      document.body.appendChild(img);
     }
+
     function getTokenBalanceFromWallet(wallet){
 
     }
