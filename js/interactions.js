@@ -125,12 +125,15 @@
           return response.json();
       }).then(function (myJson) {
           console.log(myJson.tokens);
-
+          const obj = myJson.tokens;
+            Object.keys(obj).forEach(key => {
+              if (obj[key].symbol === "DUST"){
+                console.log('Given token amount:',obj[key].amount);
+                let str = obj[key].amount;
+                document.getElementById('loginresponse').insertAdjacentHTML('beforeend', '<br>'+'Token Balance:'+str);
+              }
+            });
       }).catch(function (error) {
           console.log("Error: " + error);
       });
-    }
-
-    function getTokenBySymbol(symbol){
-
     }
