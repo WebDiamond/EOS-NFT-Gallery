@@ -99,11 +99,11 @@
         // lista di tutti gli NFTs di quella collection con quel templateid
         if (myJson.data.template_id === "204648"){
           console.log(myJson);
-          document.getElementById('responseinvx').append(JSON.stringify(myJson.data.immutable_data, null, 2))
+          //document.getElementById('responseinvx').append(JSON.stringify(myJson.data.immutable_data, null, 2))
           getImgFromIpfs(myJson.data.immutable_data.img,'responseinvx')
         } else {
           console.log(myJson);
-          document.getElementById('responseinv').append(JSON.stringify(myJson.data.immutable_data, null, 2))
+          //document.getElementById('responseinv').append(JSON.stringify(myJson.data.immutable_data, null, 2))
           getImgFromIpfs(myJson.data.immutable_data.img,'responseinv')
 
         }
@@ -113,14 +113,9 @@
     }
     function getImgFromIpfs(ipfsstring,htmlid){
       var imgipfs = 'https://ipfs.atomichub.io/ipfs/'+ipfsstring;
-    /*  var img = document.createElement("img");
-      img.src = imgipfs;
-      img.width = '50px';
-      img.height = '90px';
-      document.body.appendChild(img);*/
       const img = new Image(100, 200); // width, height
       img.src = imgipfs;
-      document.body.appendChild(img);
+      document.getElementById(''+htmlid).appendChild(img);
     }
 
     function getTokenBalanceFromWallet(wallet){
