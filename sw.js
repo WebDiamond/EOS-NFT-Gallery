@@ -1,14 +1,13 @@
-var cacheName = 'cyber-gems-pwa';
+var cacheName = 'eos-gallery-pwa';
 var filesToCache = [
-  '/cybergems/',
-  '/cybergems/index.html',
-  '/cybergems/css/style.css',
-  '/cybergems/css/all.css',
-  '/cybergems/css/solid.css',
-  '/cybergems/css/brands.css',
-  '/cybergems/js/app.js',
-  '/cybergems/js/waxjs.js',
-  '/cybergems/js/interactions.js'
+  '/index.html',
+  '/css/style.css',
+  '/css/all.css',
+  '/css/solid.css',
+  '/css/brands.css',
+  '/js/app.js',
+  '/js/waxjs.js',
+  '/js/interactions.js'
 ];
 
 /* Start the service worker and cache all of the app's content */

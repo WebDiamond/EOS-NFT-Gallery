@@ -54,7 +54,7 @@
                 stake_net_quantity: '0.00000002 WAX',
                 stake_cpu_quantity: '12.000000 WAX',
                 transfer: false,
-                memo: 'CyberGems Init Fee '
+                memo: 'transaction example '
               },
             }]
             }, {
