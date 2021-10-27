@@ -1,5 +1,4 @@
     const wax = new waxjs.WaxJS('https://wax.greymass.com', null, null, false);
-
     //autoLogin();
     //controlla se l'autologin è disponibile
     async function autoLogin() {
@@ -34,8 +33,8 @@
             document.getElementById('loginresponse').append(e.message);
         }
     }
-
-    async function initApprove() {
+/*
+    async function TransactionExample() {
         if(!wax.api) {
           return document.getElementById('response').append('* Login first *');
         }
@@ -66,7 +65,7 @@
             } catch(e) {
               //document.getElementById('response').append(e.message);
             }
-          }
+          }*/
     // ricavo dal primo endpoint l'elenco degli NFTs di tutte le collezioni presenti su quel wallet in input
     function getNFTsInventoryFromWallet(wallet){
         fetch("https://wax.api.atomicassets.io/atomicassets/v1/accounts/"+wallet)
@@ -74,12 +73,11 @@
           return response.json();
         })
       .then(function (myJson) {
-          //console.log(myJson.data.templates);
           const obj = myJson.data.templates;
           Object.keys(obj).forEach(key => {
             // per ogni template di una determinata collection svolgo delle operazioni
             if (obj[key].collection_name === "cybergems155"){
-              //console.log(key,"asset numbers:",obj[key].assets,obj[key].collection_name,obj[key].template_id)
+              console.log(key,"asset numbers:",obj[key].assets,obj[key].collection_name,obj[key].template_id)
               let i = obj[key].assets;
               while (i!=0){
                 getNFTTemplateId(obj[key].collection_name,obj[key].template_id);
@@ -97,17 +95,10 @@
       .then(function (response) {
           return response.json();
       }).then(function (myJson) {
-        // lista di tutti gli NFTs di quella collection con quel templateid
-        if (myJson.data.template_id === "204648"){
           console.log(myJson);
-          //document.getElementById('responseinvx').append(JSON.stringify(myJson.data.immutable_data, null, 2))
-          getImgFromIpfs(myJson.data.immutable_data.img,'responseinvx')
-        } else {
-          console.log(myJson);
-          //document.getElementById('responseinv').append(JSON.stringify(myJson.data.immutable_data, null, 2))
           getImgFromIpfs(myJson.data.immutable_data.img,'responseinv')
 
-        }
+
       }).catch(function (error) {
           console.log("Error: " + error);
       });
